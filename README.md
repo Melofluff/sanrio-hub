@@ -1,2 +1,1 @@
-# sanrio hub
-
+# Sanrio-Gallery
