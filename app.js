@@ -1186,9 +1186,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   document.querySelectorAll('.nav-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
+      const target = btn.dataset.tab;
+      if(!target) return;
       document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
-      const target = btn.dataset.tab;
       showTab(target);
     });
   });

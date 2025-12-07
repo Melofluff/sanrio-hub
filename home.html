@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sanrio Character Gallery - Welcome to the World of Friends</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, var(--baby-blue), #fff);
+    }
+
+    /* Header Navigation */
+    .home-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .home-header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .home-logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #502e50;
+      font-family: 'Baloo 2', cursive;
+      text-decoration: none;
+    }
+
+    .home-nav {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .home-nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .home-nav a:hover {
+      color: #502e50;
+    }
+
+
+    .search-bar:focus {
+      border-color: #502e50;
+      box-shadow: 0 0 10px rgba(107, 74, 107, 0.2);
+    }
+
+    /* Hero Banner Section */
+    .hero-banner {
+      min-height: 600px;
+      background: linear-gradient(135deg, #ffd7e6 0%, #e9e0ff 50%, #d9f0ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="100" cy="100" r="80" fill="rgba(255,255,255,0.1)"/><circle cx="1100" cy="500" r="120" fill="rgba(255,255,255,0.1)"/><circle cx="600" cy="300" r="100" fill="rgba(255,255,255,0.05)"/></svg>') no-repeat center;
+      background-size: cover;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      z-index: 1;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-family: 'Baloo 2', cursive;
+      color: #502e50;
+      margin: 0 0 20px 0;
+      font-weight: 700;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      color: #502e50;
+      margin: 0 0 40px 0;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 45px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-explore {
+      background: linear-gradient(135deg, #fff 0%, #fffaf5 100%);
+      color: #502e50;
+      box-shadow: 0 8px 25px rgba(107, 74, 107, 0.25);
+      border: 2px solid transparent;
+    }
+
+    .btn-explore:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(107, 74, 107, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #502e50;
+      border: 2px solid #502e50;
+    }
+
+    .btn-secondary:hover {
+      background: #502e50;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Featured Character Section */
+    .featured-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-family: 'Baloo 2', cursive;
+      color: #502e50;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .featured-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(97, 69, 107, 0.15);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .featured-image {
+      width: 100%;
+      height: 350px;
+      background: linear-gradient(135deg, rgba(233, 224, 255, 0.9), rgba(255, 244, 194, 0.9)),
+        url('sanrio images/my melody image.jpeg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid rgba(80, 46, 80, 0.05);
+    }
+
+    .featured-content {
+      padding: 50px 40px;
+    }
+
+    .featured-badge {
+      display: inline-block;
+      background: var(--pink);
+      color: #502e50;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .featured-content h2 {
+      font-size: 2.5rem;
+      font-family: 'Baloo 2', cursive;
+      color: #502e50;
+      margin: 0 0 15px 0;
+    }
+
+    .featured-content p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 15px 0;
+    }
+
+    .featured-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .detail-item {
+      background: var(--baby-blue);
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .detail-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .detail-value {
+      color: #502e50;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .featured-card {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-image {
+        height: 280px;
+      }
+
+      .featured-content {
+        padding: 30px 20px;
+      }
+
+      .featured-content h2 {
+        font-size: 1.8rem;
+      }
+
+      .home-nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .search-bar {
+        width: 100%;
+      }
+    }
+
+    /* Trending Characters Section */
+    .trending-section {
+      background: linear-gradient(180deg, rgba(255, 215, 230, 0.3), rgba(233, 224, 255, 0.3));
+      padding: 80px 20px;
+      margin: 80px 0 0 0;
+    }
+
+    .trending-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .trending-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .character-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .character-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(97, 69, 107, 0.2);
+    }
+
+    .character-card-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--pink), var(--soft-yellow));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+    }
+
+    .character-card-content {
+      padding: 20px;
+    }
+
+    .character-card-name {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.2rem;
+      color: #502e50;
+      margin: 0 0 8px 0;
+    }
+
+    .character-card-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Community Section */
+    .community-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .community-card {
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .community-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(97, 69, 107, 0.15);
+    }
+
+    .community-icon {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+    }
+
+    .community-card h3 {
+      font-family: 'Baloo 2', cursive;
+      color: #502e50;
+      margin: 0 0 12px 0;
+      font-size: 1.3rem;
+    }
+
+    .community-card p {
+      color: var(--muted);
+      margin: 0 0 20px 0;
+      line-height: 1.6;
+    }
+
+    .community-card a {
+      color: #502e50;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .community-card a:hover {
+      color: #ffc0cb;
+    }
+
+    /* New Debut Section */
+    .debut-section {
+      background: linear-gradient(135deg, #fff4c2, #e9e0ff);
+      padding: 60px 20px;
+      margin: 80px 0;
+      border-radius: 20px;
+    }
+
+    .debut-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .debut-badge {
+      display: inline-block;
+      background: var(--pink);
+      color: #502e50;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .debut-content h2 {
+      font-size: 2.5rem;
+      font-family: 'Baloo 2', cursive;
+      color: #502e50;
+      margin: 0 0 15px 0;
+    }
+
+    .debut-content p {
+      font-size: 1.1rem;
+      color: #502e50;
+      margin: 0 0 30px 0;
+      line-height: 1.8;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Footer */
+    .home-footer {
+      background: #502e50;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 100px;
+    }
+
+    .home-footer p {
+      margin: 0;
+      opacity: 0.8;
+    }
+
+    .home-footer a {
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    .home-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.15;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="sparkles" aria-hidden="true"></div>
+
+  <!-- Header Navigation -->
+  <header class="home-header">
+    <div class="home-header-content">
+      <a href="home.html" class="home-logo">🎀 Sanrio Friends</a>
+      <nav class="home-nav">
+        <a href="#characters">Characters</a>
+        <a href="#community">Community</a>
+        <a href="index.html">Gallery</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-content">
+      <h1>Welcome to the World of Friends</h1>
+      <p>Discover Your Favorite Sanrio Character and Explore a Universe of Adorable Stories, Friendships, and Magic!</p>
+      <div class="hero-cta">
+        <a href="index.html" class="btn btn-explore">Explore All 100+ Characters</a>
+        <a href="#featured" class="btn btn-secondary">Featured Character</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Character of the Month -->
+  <section class="featured-section" id="featured">
+    <h2 class="section-title">✨ Character of the Month</h2>
+    <div class="featured-card">
+      <div class="featured-image" role="img" aria-label="My Melody"></div>
+      <div class="featured-content">
+        <div class="featured-badge">Featured This Month</div>
+        <h2>My Melody</h2>
+        <p>A sweet and gentle character with a heart full of love and kindness. Known for her love of baking, strawberry shortcake, and helping friends, My Melody spreads warmth wherever she goes.</p>
+        <div class="featured-details">
+          <div class="detail-item">
+            <div class="detail-label">Birthday</div>
+            <div class="detail-value">January 18</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Favorite Food</div>
+            <div class="detail-value">Strawberry Shortcake</div>
+          </div>
+        </div>
+        <a href="index.html" class="btn btn-explore">View Full Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trending Characters -->
+  <section class="trending-section" id="characters">
+    <div class="trending-content">
+      <h2 class="section-title">🔥 Trending Characters Right Now</h2>
+      <div class="trending-grid">
+        <div class="character-card">
+          <div class="character-card-image">👋</div>
+          <div class="character-card-content">
+            <h3 class="character-card-name">Hello Kitty</h3>
+            <p class="character-card-desc">The iconic face of friendship and kindness, beloved worldwide.</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="character-card-image">🐧</div>
+          <div class="character-card-content">
+            <h3 class="character-card-name">Badtz-Maru</h3>
+            <p class="character-card-desc">A sassy penguin with a cool attitude and loyal heart.</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="character-card-image">😈</div>
+          <div class="character-card-content">
+            <h3 class="character-card-name">Kuromi</h3>
+            <p class="character-card-desc">Mischievous and bold, with a rebellious charm everyone loves.</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="character-card-image">☁️</div>
+          <div class="character-card-content">
+            <h3 class="character-card-name">Cinnamoroll</h3>
+            <p class="character-card-desc">A sweet cloud puppy with the kindest smile and softest heart.</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="character-card-image">🐶</div>
+          <div class="character-card-content">
+            <h3 class="character-card-name">Pompompurin</h3>
+            <p class="character-card-desc">An optimistic pug who loves snacking and spreading joy.</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="character-card-image">🍓</div>
+          <div class="character-card-content">
+            <h3 class="character-card-name">Strawberry King</h3>
+            <p class="character-card-desc">The noble fruit character of the kingdom, sweet and regal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Character Debut -->
+  <section class="featured-section">
+    <div class="debut-section">
+      <div class="debut-content">
+        <div class="debut-badge">🌟 NEW DEBUT</div>
+        <h2>Meet Yachiypo Charmer!</h2>
+        <p>Introducing an enchanting new friend to the Sanrio universe! Yachiypo Charmer brings a magical presence with their mysterious elegance and charming personality. Discover their unique story and why fans are already in love!</p>
+        <a href="index.html" class="btn btn-explore">Discover Yachiypo Charmer</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community & Fandom Section -->
+  <section class="community-section" id="community">
+    <h2 class="section-title">💖 Join the Community</h2>
+    <div class="community-grid">
+      <div class="community-card">
+        <div class="community-icon">🎨</div>
+        <h3>Fan Art Gallery</h3>
+        <p>Share your creative artwork inspired by your favorite Sanrio characters and celebrate the community's talent.</p>
+        <a href="#">Submit Your Art →</a>
+      </div>
+      <div class="community-card">
+        <div class="community-icon">🖍️</div>
+        <h3>Coloring Pages</h3>
+        <p>Download free coloring pages featuring all your favorite Sanrio friends and characters.</p>
+        <a href="#">Get Coloring Pages →</a>
+      </div>
+      <div class="community-card">
+        <div class="community-icon">🧠</div>
+        <h3>Character Trivia</h3>
+        <p>Test your knowledge with fun trivia quizzes about character stories, birthdays, and fun facts!</p>
+        <a href="#">Take the Quiz →</a>
+      </div>
+      <div class="community-card">
+        <div class="community-icon">📺</div>
+        <h3>Watch Stories</h3>
+        <p>Dive into character backstories, rivalries, and lore through curated video content and articles.</p>
+        <a href="#">Watch Videos →</a>
+      </div>
+      <div class="community-card">
+        <div class="community-icon">📰</div>
+        <h3>News & Events</h3>
+        <p>Stay updated on the latest Sanrio character debuts, collections, and community events.</p>
+        <a href="#">Read News →</a>
+      </div>
+      <div class="community-card">
+        <div class="community-icon">💬</div>
+        <h3>Fan Forum</h3>
+        <p>Connect with fellow fans, discuss favorite characters, and share your Sanrio collection!</p>
+        <a href="#">Join Forum →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="home-footer">
+    <p>✨ Welcome to the World of Friends ✨ | <a href="index.html">View Full Gallery</a> | All characters inspired by Sanrio</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Sanrio Character Gallery. Made with 💖 for character lovers everywhere.</p>
+  </footer>
+
+  <script>
+    // Search functionality
+    // Search bar removed
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        if (this.getAttribute('href') !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // Trending cards click to gallery
+    document.querySelectorAll('.character-card').forEach(card => {
+      card.addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>
