@@ -7,151 +7,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(180deg, var(--baby-blue), #fff);
-    }
-
-    /* Header Navigation */
-    .home-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 15px 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .home-header-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .home-logo {
-      font-size: 28px;
-      font-weight: 700;
-      color: #502e50;
-      font-family: 'Baloo 2', cursive;
-      text-decoration: none;
-    }
-
-    .home-nav {
-      display: flex;
-      gap: 25px;
-      align-items: center;
-    }
-
-    .home-nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    .home-nav a:hover {
-      color: #502e50;
-    }
-
-
-    .search-bar:focus {
-      border-color: #502e50;
-      box-shadow: 0 0 10px rgba(107, 74, 107, 0.2);
-    }
-
-    /* Hero Banner Section */
-    .hero-banner {
-      min-height: 600px;
-      background: linear-gradient(135deg, #ffd7e6 0%, #e9e0ff 50%, #d9f0ff 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-banner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="100" cy="100" r="80" fill="rgba(255,255,255,0.1)"/><circle cx="1100" cy="500" r="120" fill="rgba(255,255,255,0.1)"/><circle cx="600" cy="300" r="100" fill="rgba(255,255,255,0.05)"/></svg>') no-repeat center;
-      background-size: cover;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      z-index: 1;
-      animation: fadeInDown 0.8s ease-out;
-    }
-
-    .hero-content h1 {
-      font-size: clamp(2rem, 6vw, 4rem);
-      font-family: 'Baloo 2', cursive;
-      color: #502e50;
-      margin: 0 0 20px 0;
-      font-weight: 700;
-    }
-
-    .hero-content p {
-      font-size: 1.3rem;
-      color: #502e50;
-      margin: 0 0 40px 0;
-      line-height: 1.6;
-    }
-
-    .hero-cta {
-      display: flex;
       gap: 15px;
       justify-content: center;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 16px 45px;
-      font-size: 1.1rem;
+      padding: 22px 68px;
+      font-size: 1.35rem;
       border: none;
-      border-radius: 50px;
+      border-radius: 24px;
       cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
+      font-weight: 800;
+      transition: all 0.22s ease;
       text-decoration: none;
       display: inline-block;
       font-family: 'Inter', sans-serif;
+      letter-spacing: 0.01em;
+      transform: translateZ(0);
     }
 
     .btn-explore {
-      background: linear-gradient(135deg, #fff 0%, #fffaf5 100%);
+      background: radial-gradient(circle at 30% 30%, #fffaf5 0%, #fff 40%, #ffeef7 100%);
       color: #502e50;
-      box-shadow: 0 8px 25px rgba(107, 74, 107, 0.25);
-      border: 2px solid transparent;
+      box-shadow: 0 16px 40px rgba(107, 74, 107, 0.3);
+      border: 2px solid rgba(255, 215, 230, 0.65);
+      text-decoration: none;
+      outline: 0;
     }
 
     .btn-explore:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(107, 74, 107, 0.35);
+      transform: translateY(-6px) scale(1.06);
+      box-shadow: 0 22px 48px rgba(107, 74, 107, 0.36);
     }
 
     .btn-secondary {
-      background: transparent;
+      background: linear-gradient(135deg, rgba(255, 215, 230, 0.3), rgba(233, 224, 255, 0.3));
       color: #502e50;
       border: 2px solid #502e50;
+      text-decoration: none;
+      box-shadow: 0 10px 26px rgba(107, 74, 107, 0.2);
     }
 
     .btn-secondary:hover {
       background: #502e50;
       color: white;
-      transform: translateY(-3px);
+      transform: translateY(-6px) scale(1.06);
+      box-shadow: 0 18px 32px rgba(80, 46, 80, 0.32);
     }
 
     /* Featured Character Section */
@@ -317,6 +219,41 @@
       align-items: center;
       justify-content: center;
       font-size: 80px;
+    }
+
+    .character-card-image.hello-kitty {
+      background: linear-gradient(135deg, rgba(255, 215, 230, 0.65), rgba(255, 244, 194, 0.65)),
+        url('sanrio images/hello kitty 1.png') center/cover no-repeat;
+      color: transparent;
+      font-size: 0;
+    }
+
+    .character-card-image.badtz-maru {
+      background: linear-gradient(135deg, rgba(233, 224, 255, 0.65), rgba(217, 240, 255, 0.65)),
+        url('sanrio images/badtz maru.png') center/cover no-repeat;
+      color: transparent;
+      font-size: 0;
+    }
+
+    .character-card-image.kuromi {
+      background: linear-gradient(135deg, rgba(255, 215, 230, 0.6), rgba(233, 224, 255, 0.6)),
+        url('sanrio images/kuromi.png') center/cover no-repeat;
+      color: transparent;
+      font-size: 0;
+    }
+
+    .character-card-image.cinnamoroll {
+      background: linear-gradient(135deg, rgba(217, 240, 255, 0.6), rgba(255, 244, 194, 0.55)),
+        url('sanrio images/cinnamoroll.png') center/cover no-repeat;
+      color: transparent;
+      font-size: 0;
+    }
+
+    .character-card-image.pompompurin {
+      background: linear-gradient(135deg, rgba(255, 244, 194, 0.65), rgba(255, 215, 230, 0.55)),
+        url('sanrio images/pompompurin.jpeg') center/cover no-repeat;
+      color: transparent;
+      font-size: 0;
     }
 
     .character-card-content {
@@ -542,35 +479,35 @@
       <h2 class="section-title">🔥 Trending Characters Right Now</h2>
       <div class="trending-grid">
         <div class="character-card">
-          <div class="character-card-image">👋</div>
+          <div class="character-card-image hello-kitty" aria-label="Hello Kitty"></div>
           <div class="character-card-content">
             <h3 class="character-card-name">Hello Kitty</h3>
             <p class="character-card-desc">The iconic face of friendship and kindness, beloved worldwide.</p>
           </div>
         </div>
         <div class="character-card">
-          <div class="character-card-image">🐧</div>
+          <div class="character-card-image badtz-maru" aria-label="Badtz-Maru"></div>
           <div class="character-card-content">
             <h3 class="character-card-name">Badtz-Maru</h3>
             <p class="character-card-desc">A sassy penguin with a cool attitude and loyal heart.</p>
           </div>
         </div>
         <div class="character-card">
-          <div class="character-card-image">😈</div>
+          <div class="character-card-image kuromi" aria-label="Kuromi"></div>
           <div class="character-card-content">
             <h3 class="character-card-name">Kuromi</h3>
             <p class="character-card-desc">Mischievous and bold, with a rebellious charm everyone loves.</p>
           </div>
         </div>
         <div class="character-card">
-          <div class="character-card-image">☁️</div>
+          <div class="character-card-image cinnamoroll" aria-label="Cinnamoroll"></div>
           <div class="character-card-content">
             <h3 class="character-card-name">Cinnamoroll</h3>
             <p class="character-card-desc">A sweet cloud puppy with the kindest smile and softest heart.</p>
           </div>
         </div>
         <div class="character-card">
-          <div class="character-card-image">🐶</div>
+          <div class="character-card-image pompompurin" aria-label="Pompompurin"></div>
           <div class="character-card-content">
             <h3 class="character-card-name">Pompompurin</h3>
             <p class="character-card-desc">An optimistic pug who loves snacking and spreading joy.</p>
@@ -583,61 +520,6 @@
             <p class="character-card-desc">The noble fruit character of the kingdom, sweet and regal.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- New Character Debut -->
-  <section class="featured-section">
-    <div class="debut-section">
-      <div class="debut-content">
-        <div class="debut-badge">🌟 NEW DEBUT</div>
-        <h2>Meet Yachiypo Charmer!</h2>
-        <p>Introducing an enchanting new friend to the Sanrio universe! Yachiypo Charmer brings a magical presence with their mysterious elegance and charming personality. Discover their unique story and why fans are already in love!</p>
-        <a href="index.html" class="btn btn-explore">Discover Yachiypo Charmer</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Community & Fandom Section -->
-  <section class="community-section" id="community">
-    <h2 class="section-title">💖 Join the Community</h2>
-    <div class="community-grid">
-      <div class="community-card">
-        <div class="community-icon">🎨</div>
-        <h3>Fan Art Gallery</h3>
-        <p>Share your creative artwork inspired by your favorite Sanrio characters and celebrate the community's talent.</p>
-        <a href="#">Submit Your Art →</a>
-      </div>
-      <div class="community-card">
-        <div class="community-icon">🖍️</div>
-        <h3>Coloring Pages</h3>
-        <p>Download free coloring pages featuring all your favorite Sanrio friends and characters.</p>
-        <a href="#">Get Coloring Pages →</a>
-      </div>
-      <div class="community-card">
-        <div class="community-icon">🧠</div>
-        <h3>Character Trivia</h3>
-        <p>Test your knowledge with fun trivia quizzes about character stories, birthdays, and fun facts!</p>
-        <a href="#">Take the Quiz →</a>
-      </div>
-      <div class="community-card">
-        <div class="community-icon">📺</div>
-        <h3>Watch Stories</h3>
-        <p>Dive into character backstories, rivalries, and lore through curated video content and articles.</p>
-        <a href="#">Watch Videos →</a>
-      </div>
-      <div class="community-card">
-        <div class="community-icon">📰</div>
-        <h3>News & Events</h3>
-        <p>Stay updated on the latest Sanrio character debuts, collections, and community events.</p>
-        <a href="#">Read News →</a>
-      </div>
-      <div class="community-card">
-        <div class="community-icon">💬</div>
-        <h3>Fan Forum</h3>
-        <p>Connect with fellow fans, discuss favorite characters, and share your Sanrio collection!</p>
-        <a href="#">Join Forum →</a>
       </div>
     </div>
   </section>
